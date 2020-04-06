@@ -4,6 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.ui import Select
 
+
 def driver_initialize(url, pageTitle):
     """
     Starts a Firefox driver in the defined URL and validate the tittle of the page
@@ -19,10 +20,11 @@ def driver_initialize(url, pageTitle):
     sleep(2)
 
     print('Validate if the page is correct')
-    assert pageTitle in driver.title #Validation
+    assert pageTitle in driver.title  # Validation
     driver.save_screenshot("./screenshots/1-driver_initialize.png")
 
     return driver
+
 
 def go_to_contac_us(driver):
     """
@@ -32,11 +34,13 @@ def go_to_contac_us(driver):
     sleep(2)
     contactUsButton = driver.find_element_by_id('contact-link')
     contactUsButton.click()
-    customerServiceLabel = driver.find_elements_by_xpath("//*[contains(text(),'Customer service - Contact us')]")
-    
+    customerServiceLabel = driver.find_elements_by_xpath(
+        "//*[contains(text(),'Customer service - Contact us')]")
+
     print('Validate if the section is correct')
-    assert customerServiceLabel != 0 #Validation
+    assert customerServiceLabel != 0  # Validation
     driver.save_screenshot("./screenshots/2-go_to_contac_us.png")
+
 
 def send_message(message, email, driver):
     """
@@ -56,24 +60,28 @@ def send_message(message, email, driver):
     messageTexArea = driver.find_element_by_id('message')
     messageTexArea.send_keys(message)
     sleep(2)
-    driver.execute_script("window.scrollTo(0, document.body.scrollHeight/3.4);")
+    driver.execute_script(
+        "window.scrollTo(0, document.body.scrollHeight/3.4);")
     driver.save_screenshot("./screenshots/3-filled_form.png")
 
     sendButton = driver.find_element_by_id('submitMessage')
     sendButton.click()
     sleep(2)
 
-    customerServiceLabel = driver.find_elements_by_class_name('alert alert-success')
-    
+    customerServiceLabel = driver.find_elements_by_class_name(
+        'alert alert-success')
+
     print('Validate the sending of the message')
-    assert customerServiceLabel != 0 #Validation
+    assert customerServiceLabel != 0  # Validation
     driver.save_screenshot("./screenshots/4-send_message.png")
 
+
 def test_contac_us(page, pageTitle, message, email):
-    driver = driver_initialize(page,pageTitle)
+    driver = driver_initialize(page, pageTitle)
     go_to_contac_us(driver)
     send_message(message, email, driver)
     driver.close()
+
 
 if __name__ == '__main__':
     page = "http://automationpractice.com/index.php"
