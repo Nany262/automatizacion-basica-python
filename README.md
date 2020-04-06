@@ -22,7 +22,7 @@ $ pip3 install selenium
 ```
  - Descargar [geckodriver](https://github.com/mozilla/geckodriver/releases) y poner la ruta del ejecutable en el PATH. 
 ``` shell
-$ export PATH=$PATH:/path/to/gechodriver
+$ export PATH=$PATH:/path/to/geckodriver
 
 ```
  - Clonar este repo
@@ -33,5 +33,5 @@ $ git clone https://github.com/Nany262/automatizacion-basica-python.git
 Corre el script
 ----------
 ``` shell
-$ python3 facebook_group_script.py
+$ python3 automation_practice_script.py
 ```
