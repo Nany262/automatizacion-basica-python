@@ -20,6 +20,11 @@ $ sudo apt install python3-pip
 ``` shell
 $ pip3 install selenium
 ```
+ - Descargar [geckodriver](https://github.com/mozilla/geckodriver/releases) y poner la ruta del ejecutable en el PATH. 
+``` shell
+$ export PATH=$PATH:/path/to/gechodriver
+
+```
  - Clonar este repo
 ``` shell
 $ git clone https://github.com/Nany262/automatizacion-basica-python.git
